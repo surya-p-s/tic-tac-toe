@@ -1,7 +1,7 @@
 {
   "name": "tic-tac-toe",
   "version": "0.1.0",
-  "homepage":"https://github.com/surya-p-s/React.git",
+  "homepage":"https://github.com/surya-p-s/tic-tac-toe.git",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
