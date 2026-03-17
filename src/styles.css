@@ -1,0 +1,200 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  max-width: 500px;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.game-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.5em;
+  color: #333;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.game-header h2 {
+  margin: 0;
+  font-size: 1.3em;
+  color: #666;
+  font-weight: normal;
+}
+
+.status {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #333;
+  min-height: 2em;
+  text-align: center;
+  padding: 10px 20px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 10px;
+}
+
+.status::before {
+  content: attr(status-value);
+}
+
+.status[status-value = "Next player: X"]{
+  color: #e41700 !important;
+}
+
+.status[status-value = "Next player: O"]{
+  color: #27ae60 !important;
+}
+
+.status[status-value = "Winner: X"]{
+  color: #ffffff !important;
+  font-size: 3.8em;
+  padding: 20px 20px;
+  background:  rgb(158, 0, 0) !important;
+}
+
+.status[status-value = "Winner: O"]{
+  color: #ffffff !important;
+  font-size: 3.8em;
+  padding: 20px 20px;
+  background:  rgb(0, 158, 8) !important;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.board-row {
+  display: flex;
+  gap: 0;
+}
+
+.square {
+  width: 120px;
+  height: 120px;
+  background: #fff;
+  border: 3px solid #999;
+  font-size: 3em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.2s ease;
+  user-select: none;
+  color: #333;
+}
+
+
+.square::before {
+  content: attr(data-value);
+}
+.square[data-value="X"] {
+  color: #e74c3c !important;
+}
+.square[data-value="O"] {
+  color: #27ae60 !important;
+}
+
+.square:hover {
+  background: #f0f0f0;
+  border-color: #666;
+  transform: scale(1.02);
+}
+
+.square:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.5);
+}
+
+.square.winner {
+  background: #ffd700 !important;
+  border-color: #ff6b35 !important;
+  color: #333;
+  animation: pulse 0.6s ease-in-out;
+}
+
+.reset-btn {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(238,90,36,0.4);
+}
+
+.reset-btn:hover {
+  background: linear-gradient(45deg, #ee5a24, #ff6b6b);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(238,90,36,0.6);
+}
+
+.reset-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+  
+  .game {
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .square {
+    width: 90px;
+    height: 90px;
+    font-size: 2.2em;
+  }
+  
+  .game-header h1 {
+    font-size: 2em;
+  }
+}
+
+.board-row.winner {
+  background: rgba(255,215,0,0.3);
+}
